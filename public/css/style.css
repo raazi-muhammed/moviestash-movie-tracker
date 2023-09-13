@@ -12016,6 +12016,10 @@ textarea.form-control-lg {
   color: white;
 }
 
+.btn-dark-half {
+  background-color: hsla(0, 0%, 100%, 0.05);
+}
+
 .form-control {
   height: 3rem;
   color: white;
@@ -12033,4 +12037,9 @@ textarea.form-control-lg {
 
 .input-group-width {
   width: min(100%, 25rem);
+}
+
+/* Cards */
+.main-card {
+  width: 18rem;
 }/*# sourceMappingURL=style.css.map */
