@@ -1,0 +1,65 @@
+<%- include("./layout/header.ejs")%>
+
+<body
+	id="body-signup"
+	class="bg-poster-img text-light d-flex align-items-center justify-content-center p-4"
+>
+	<div class="wrapper row input-group-width">
+		<div class="row flex-grow-1 bg-dark p-sm-4 p-0 m-0 rounded-4">
+			<h1 class="text-primary mb-4">Let's Get Started</h1>
+			<form>
+				<div class="mb-3">
+					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+					<input
+						type="email"
+						class="form-control"
+						id="exampleInputEmail1"
+						aria-describedby="emailHelp"
+						placeholder="username"
+					/>
+				</div>
+				<div class="mb-3">
+					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+					<input
+						type="email"
+						class="form-control"
+						id="exampleInputEmail1"
+						aria-describedby="emailHelp"
+						placeholder="email"
+					/>
+				</div>
+
+				<div class="mb-3">
+					<!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+					<input
+						type="password"
+						class="form-control"
+						id="exampleInputPassword1"
+						placeholder="password"
+					/>
+				</div>
+				<div class="mb-3">
+					<!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+					<input
+						type="password"
+						class="form-control"
+						id="exampleInputPassword1"
+						placeholder="confirm password"
+					/>
+				</div>
+				<div class="mb-3 form-check">
+					<input type="checkbox" class="form-check-input" id="exampleCheck1" />
+					<label class="form-check-label" for="exampleCheck1"
+						>I Agree to the Privacy Policy</label
+					>
+				</div>
+				<button type="submit" class="btn btn-primary">Sign Up</button>
+				<p class="text-center mt-3">
+					<a href="/login">Go Back to <b> Log In</b></a>
+				</p>
+			</form>
+		</div>
+	</div>
+</body>
+
+<%- include("./layout/footer.ejs")%>

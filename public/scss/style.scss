@@ -1,0 +1,89 @@
+body {
+	background-color: green;
+}
+
+.bg-poster-img {
+	background-color: black;
+	min-width: 100vw;
+	min-height: 100vh;
+
+	isolation: isolate;
+	position: relative;
+}
+
+.bg-poster-img::after {
+	content: "";
+	background-color: #212529;
+	background-image: url("/static/assets/img/bg-movie-poster.webp");
+	background-size: cover;
+	background-position: center;
+
+	inset: 0;
+	z-index: -1;
+	opacity: 0.15;
+
+	position: absolute;
+}
+
+@media screen and (max-width: 580px) {
+	#body-signup::after {
+		background-image: none;
+
+		opacity: 1;
+	}
+}
+
+/* Colors */
+$primary: #ed462f;
+$dark: #171717;
+
+$border-radius: 1rem;
+
+$btn-font-size: 1rem;
+
+/* Input */
+$input-bg: hsla(0, 0%, 100%, 0.15);
+$input-border-width: 0;
+$input-color: white;
+$input-placeholder-color: hsl(0, 0%, 100%, 0.5);
+$input-height: 3rem;
+
+/* check box */
+$form-check-input-border: none;
+
+/* BUtton */
+$btn-font-weight: bold;
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+/* BUtton */
+
+.btn {
+	height: 3rem;
+	width: 100%;
+	color: white;
+}
+
+.btn:hover {
+	color: white;
+}
+
+.form-control {
+	height: 3rem;
+	color: white;
+}
+
+.gradient-background-darken {
+	background-image: linear-gradient(to right, black, rgba(0, 0, 0, 0));
+
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	right: 0;
+	top: 0;
+	z-index: -1;
+}
+
+.input-group-width {
+	width: min(100%, 25rem);
+}

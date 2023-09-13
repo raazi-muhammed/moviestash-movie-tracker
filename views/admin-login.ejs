@@ -1,0 +1,39 @@
+<%- include("./layout/header.ejs")%>
+
+<body
+	id="body-admin-login"
+	class="bg-dark text-light d-flex align-items-center justify-content-center p-4 vh-100"
+>
+	<div class="wrapper row input-group-width my-auto">
+		<div class="row flex-grow-1 bg-primary p-sm-4 p-0 m-0 rounded-4">
+			<h1 class="text-light">Admin Panel</h1>
+			<p>Welcome to the Admin Portal. Please log in to access your account</p>
+			<form>
+				<div class="mb-3">
+					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+					<input
+						type="email"
+						class="form-control"
+						id="exampleInputEmail1"
+						aria-describedby="emailHelp"
+						placeholder="username"
+					/>
+				</div>
+
+				<div class="mb-3">
+					<!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
+					<input
+						type="password"
+						class="form-control"
+						id="exampleInputPassword1"
+						placeholder="password"
+					/>
+				</div>
+
+				<button type="submit" class="btn btn-dark">Log In</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+<%- include("./layout/footer.ejs")%>
