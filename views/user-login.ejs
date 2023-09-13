@@ -6,13 +6,14 @@
 		<div class="row flex-grow-1 input-group-width m-0">
 			<h1 class="text-primary">Moviestash</h1>
 			<p>Your personal movie library and tracking companion.</p>
-			<form class="col-12">
+			<form action="/login/submit" method="POST" class="col-12">
 				<div class="mb-3">
 					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
 					<input
-						type="email"
+						type="text"
 						class="form-control"
-						id="exampleInputEmail1"
+						id="username"
+						name="username"
 						aria-describedby="emailHelp"
 						placeholder="username"
 					/>
@@ -22,7 +23,8 @@
 					<input
 						type="password"
 						class="form-control"
-						id="exampleInputPassword1"
+						id="password"
+						name="password"
 						placeholder="password"
 					/>
 				</div>

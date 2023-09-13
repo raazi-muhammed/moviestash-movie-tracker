@@ -7,13 +7,14 @@
 	<div class="wrapper row input-group-width">
 		<div class="row flex-grow-1 bg-dark p-sm-4 p-0 m-0 rounded-4">
 			<h1 class="text-primary mb-4">Let's Get Started</h1>
-			<form>
+			<form action="/signup/submit" method="POST">
 				<div class="mb-3">
 					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
 					<input
-						type="email"
+						type="text"
+						id="username"
+						name="username"
 						class="form-control"
-						id="exampleInputEmail1"
 						aria-describedby="emailHelp"
 						placeholder="username"
 					/>
@@ -21,9 +22,10 @@
 				<div class="mb-3">
 					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
 					<input
-						type="email"
+						type="text"
+						id="email"
+						name="email"
 						class="form-control"
-						id="exampleInputEmail1"
 						aria-describedby="emailHelp"
 						placeholder="email"
 					/>
@@ -33,8 +35,9 @@
 					<!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
 					<input
 						type="password"
+						id="password"
+						name="password"
 						class="form-control"
-						id="exampleInputPassword1"
 						placeholder="password"
 					/>
 				</div>
@@ -42,8 +45,9 @@
 					<!-- <label for="exampleInputPassword1" class="form-label">Password</label> -->
 					<input
 						type="password"
+						id="c-password"
+						name="c-password"
 						class="form-control"
-						id="exampleInputPassword1"
 						placeholder="confirm password"
 					/>
 				</div>

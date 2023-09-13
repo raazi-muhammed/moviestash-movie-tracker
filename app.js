@@ -3,6 +3,9 @@ const app = express();
 
 const bodyParser = require("body-parser");
 const path = require("path");
+const session = require("express-session");
+const { v4: uuidv4 } = require("uuid");
+
 const PORT = 3000;
 
 const userLogin = require("./routes/userLogin");
@@ -11,10 +14,6 @@ const adminLogin = require("./routes/adminLogin");
 const adminDashboard = require("./routes/adminDashboard");
 const userHomepage = require("./routes/userHomepage");
 
-app.get("/", (req, res) => {
-	res.send("Home Page");
-});
-
 //view engine
 app.set("view engine", "ejs");
 
@@ -22,8 +21,26 @@ app.set("view engine", "ejs");
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//session
+app.use(
+	session({
+		secret: uuidv4(),
+		resave: false,
+		saveUninitialized: true,
+	})
+);
+
 //static
 app.use("/static", express.static(path.join(__dirname, "/public")));
+
+/* Home Page */
+app.get("/", (req, res) => {
+	console.log("home: " + req.session.user);
+
+	if (req.session.user) res.redirect("/homepage");
+	else res.redirect("/login");
+	/* res.send(req.session.user); */
+});
 
 //router
 app.use("/login", userLogin);
