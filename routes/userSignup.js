@@ -1,17 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const collection = require("../controllers/mongodb");
-const bcrypt = require("bcrypt");
-
-async function hashPass(password) {
-	try {
-		const hashedPass = await bcrypt.hash(password, 10);
-		console.log(hashedPass);
-		return hashedPass;
-	} catch (error) {
-		console.log(error);
-	}
-}
+const collection = require("../model/mongodb");
+const authentication = require("../controllers/authentication");
 
 router.get("/", (req, res) => {
 	res.render("user-signup");
@@ -19,15 +9,15 @@ router.get("/", (req, res) => {
 
 router.post("/submit", async (req, res) => {
 	console.log(req.body);
-	hashedPass = await hashPass(req.body.password);
+	hashedPass = await authentication.hashPass(req.body.password);
 	const userData = {
 		name: req.body.username,
 		password: hashedPass,
 		email: req.body.email,
+		admin: false,
 	};
 	await collection.insertMany([userData]);
-
-	res.send(userData);
+	res.redirect("/homepage");
 });
 
 module.exports = router;

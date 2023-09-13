@@ -5,4 +5,10 @@ router.get("/", (req, res) => {
 	res.render("user-homepage");
 });
 
+router.get("/logout", (req, res) => {
+	console.log("Log Out");
+	req.session.destroy();
+	res.redirect("/");
+});
+
 module.exports = router;
