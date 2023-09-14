@@ -60,6 +60,7 @@ $btn-font-weight: bold;
 .btn {
 	height: 3rem;
 	width: 100%;
+	max-width: 15rem;
 	color: white;
 }
 
@@ -101,4 +102,12 @@ select {
 /* Cards */
 .main-card {
 	width: 18rem;
+}
+
+.text-limit-dot {
+	display: inline-block;
+	width: 180px;
+	white-space: nowrap;
+	overflow: hidden !important;
+	text-overflow: ellipsis;
 }
