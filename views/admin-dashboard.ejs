@@ -2,9 +2,9 @@
 
 <body class="bg-dark">
 	<%- include("./layout/other/admin-top.ejs") %>
-	<input class="form-control" type="number" placeholder="Default input" />
 
 	<main class="p-5">
+		<input class="form-control w-25" type="text" placeholder="Search" />
 		<section class="d-flex gap-4 flex-wrap">
 			<% allUsers.forEach((element)=>{%>
 			<section
@@ -89,7 +89,7 @@
 							xmlns="http://www.w3.org/2000/svg"
 							width="32"
 							height="32"
-							fill="currentColor"
+							fill="white"
 							class="bi bi-person-add"
 							viewBox="0 0 16 16"
 						>
