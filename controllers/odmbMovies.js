@@ -6,7 +6,6 @@ async function getMovie(movieId) {
 		const data = await response.json();
 
 		if (data.Response === "True") {
-			console.log(data.Poster + " " + data.Title);
 			const obj = {
 				poster: data.Poster,
 				title: data.Title,
@@ -26,10 +25,8 @@ async function getMovie(movieId) {
 async function getAllMovies(moviesId) {
 	let moviesDetails = [];
 	for (const key in moviesId) {
-		console.log("movie all move:" + (await getMovie(moviesId[key])));
 		moviesDetails.push(await getMovie(moviesId[key]));
 	}
-	console.log(moviesDetails);
 	return moviesDetails;
 }
 

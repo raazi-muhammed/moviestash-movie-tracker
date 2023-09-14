@@ -1,7 +1,3 @@
-body {
-	background-color: green;
-}
-
 .bg-poster-img {
 	background-color: black;
 	min-width: 100vw;
@@ -35,6 +31,7 @@ body {
 
 /* Colors */
 $primary: #ed462f;
+
 $dark: #171717;
 
 $border-radius: 1rem;
@@ -60,8 +57,12 @@ $btn-font-weight: bold;
 .btn {
 	height: 3rem;
 	width: 100%;
-	max-width: 15rem;
+
 	color: white;
+}
+
+.btn--max-width {
+	max-width: 15rem;
 }
 
 .btn:hover {

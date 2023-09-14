@@ -32,6 +32,9 @@ const loginSchema = new mongoose.Schema({
 		type: Boolean,
 		required: true,
 	},
+	profilePic: {
+		type: String,
+	},
 });
 
 const collection = new mongoose.model("users", loginSchema);

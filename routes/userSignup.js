@@ -8,6 +8,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/submit", async (req, res) => {
+	req.session.user = req.body;
 	console.log("submit data: " + req.body);
 	hashedPass = await authentication.hashPass(req.body.password);
 	const userData = {
@@ -16,6 +17,8 @@ router.post("/submit", async (req, res) => {
 		email: req.body.email,
 		age: req.body.age,
 		gender: req.body.gender,
+		profilePic:
+			"https://med.gov.bz/wp-content/uploads/2020/08/dummy-profile-pic.jpg",
 		admin: false,
 	};
 	await collection.insertMany([userData]);

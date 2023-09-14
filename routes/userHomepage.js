@@ -1,29 +1,31 @@
 const express = require("express");
 const router = express.Router();
 const authentication = require("../controllers/authentication");
-const getAllMovies = require("../controllers/odmbMovies");
+const dbFunction = require("../controllers/databaseFunction");
+const renderUserHomePage = require("../controllers/userHomePageController");
 
-router.get("/", async (req, res) => {
-	console.log("user home pages");
-	const moviesId = [
-		"tt3896198",
-		"tt4154796",
-		"tt1517268",
-		"tt15398776",
-		"tt9362722",
-		"tt0816692",
-	];
+router.post("/", authentication.checkDetails, async (req, res) => {
+	req.session.user = req.body;
 
-	moviesDetails = await getAllMovies(moviesId);
-	//console.log("movieDetails: " + moviesDetails);
-	console.log("user seesion: " + req.session.user.username);
-	res.render("user-homepage", { moviesDetails });
+	//console.log(req.session.user.username);
+	let userData = await dbFunction.getUserDetails(req.session.user.username);
+	//console.log(userData);
+
+	renderUserHomePage(req, res, userData);
+});
+
+router.get("/", authentication.checkDetails, async (req, res) => {
+	//console.log(req.session.user.username);
+
+	let userData = await dbFunction.getUserDetails(req.session.user.username);
+
+	//console.log(userData);
+
+	renderUserHomePage(req, res, userData);
 });
 
 router.get("/logout", (req, res) => {
-	console.log("Log Out");
 	req.session.destroy();
-
 	res.redirect("/");
 });
 

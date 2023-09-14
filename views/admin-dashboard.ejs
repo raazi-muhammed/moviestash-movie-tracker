@@ -10,7 +10,7 @@
 			<section
 				style="
 					background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)),
-						url('/static/assets/img/dummy-profile-pic.jpg');
+						url('<%= element.profilePic %>');
 
 					background-size: cover;
 					background-repeat: no-repeat;
@@ -20,7 +20,7 @@
 			>
 				<img
 					class="rounded-circle"
-					src="/static/assets/img/dummy-profile-pic.jpg"
+					src="<%= element.profilePic %>"
 					width="120"
 					height="120"
 					alt="Profile Photo"

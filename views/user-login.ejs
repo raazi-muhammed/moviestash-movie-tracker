@@ -6,7 +6,7 @@
 		<div class="row flex-grow-1 input-group-width m-0">
 			<h1 class="text-primary">Moviestash</h1>
 			<p>Your personal movie library and tracking companion.</p>
-			<form action="/login/submit" method="POST" class="col-12">
+			<form action="/homepage" method="POST" class="col-12" novalidate>
 				<div class="mb-3">
 					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
 					<input
@@ -16,6 +16,7 @@
 						name="username"
 						aria-describedby="emailHelp"
 						placeholder="username"
+						required
 					/>
 				</div>
 				<div class="mb-3">
@@ -26,14 +27,21 @@
 						id="password"
 						name="password"
 						placeholder="password"
+						required
 					/>
 				</div>
 				<div class="mb-3 form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1" />
-					<label class="form-check-label" for="exampleCheck1"
+					<input
+						type="checkbox"
+						class="form-check-input"
+						id="remmeberMe"
+						checked
+					/>
+					<label class="form-check-label text-light" for="remmeberMe"
 						>Remember Me?</label
 					>
 				</div>
+
 				<button type="submit" class="btn btn-primary">Log In</button>
 				<p class="text-center mt-3">
 					<a href="/signup">Don’t have an account? <b> Sign Up</b></a>
