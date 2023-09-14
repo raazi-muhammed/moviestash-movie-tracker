@@ -12020,9 +12020,17 @@ textarea.form-control-lg {
   background-color: hsla(0, 0%, 100%, 0.05);
 }
 
-.form-control {
+.btn-circle {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control,
+select {
   height: 3rem;
-  color: white;
 }
 
 .gradient-background-darken {

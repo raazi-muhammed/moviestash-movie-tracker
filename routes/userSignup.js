@@ -8,12 +8,14 @@ router.get("/", (req, res) => {
 });
 
 router.post("/submit", async (req, res) => {
-	console.log(req.body);
+	console.log("submit data: " + req.body);
 	hashedPass = await authentication.hashPass(req.body.password);
 	const userData = {
 		name: req.body.username,
 		password: hashedPass,
 		email: req.body.email,
+		age: req.body.age,
+		gender: req.body.gender,
 		admin: false,
 	};
 	await collection.insertMany([userData]);

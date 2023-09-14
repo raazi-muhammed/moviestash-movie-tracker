@@ -22,6 +22,12 @@ const loginSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	age: {
+		type: Number,
+	},
+	gender: {
+		type: String,
+	},
 	admin: {
 		type: Boolean,
 		required: true,

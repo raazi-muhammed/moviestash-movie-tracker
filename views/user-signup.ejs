@@ -16,7 +16,8 @@
 						name="username"
 						class="form-control"
 						aria-describedby="emailHelp"
-						placeholder="username"
+						placeholder="username*"
+						required
 					/>
 				</div>
 				<div class="mb-3">
@@ -27,7 +28,29 @@
 						name="email"
 						class="form-control"
 						aria-describedby="emailHelp"
-						placeholder="email"
+						placeholder="email*"
+						required
+					/>
+				</div>
+				<select
+					class="form-select mb-3"
+					name="gender"
+					aria-label="Default select example"
+				>
+					<option selected>Gender</option>
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Rather not say">Rather not say</option>
+				</select>
+				<div class="mb-3">
+					<!-- <label for="exampleInputEmail1" class="form-label">Email address</label> -->
+					<input
+						type="number"
+						id="age"
+						name="age"
+						class="form-control"
+						aria-describedby="emailHelp"
+						placeholder="age"
 					/>
 				</div>
 
@@ -38,7 +61,8 @@
 						id="password"
 						name="password"
 						class="form-control"
-						placeholder="password"
+						placeholder="password*"
+						required
 					/>
 				</div>
 				<div class="mb-3">
@@ -48,7 +72,8 @@
 						id="c-password"
 						name="c-password"
 						class="form-control"
-						placeholder="confirm password"
+						placeholder="confirm password*"
+						required
 					/>
 				</div>
 				<div class="mb-3 form-check">

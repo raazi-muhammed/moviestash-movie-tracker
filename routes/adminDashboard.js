@@ -1,20 +1,29 @@
 const express = require("express");
 const router = express.Router();
-const collection = require("../model/mongodb");
+const adminController = require("../controllers/adminController");
 
-router.get("/", async (req, res) => {
-	const allUsers = await collection.find({});
-	console.log(allUsers);
-
-	res.render("admin-dashboard", { allUsers });
+router.get("/", (req, res) => {
+	adminController.displayUsers(req, res);
 });
 
-router.get("/delete", async (req, res) => {
-	console.log("deleting id: " + req.query.id);
+router.get("/delete", (req, res) => {
+	adminController.deleteUser(req, res);
+});
 
-	await collection.deleteOne({ _id: req.query.id }); // returns {deletedCount: 1}
+router.get("/edit", (req, res) => {
+	adminController.editUser(req, res);
+});
 
-	res.redirect("/admin/dashboard");
+router.post("/edit/submit", (req, res) => {
+	adminController.editUserSubmit(req, res);
+});
+
+router.get("/create", (req, res) => {
+	res.render("admin-user-create");
+});
+
+router.post("/create/submit", (req, res) => {
+	adminController.createUserSubmit(req, res);
 });
 
 module.exports = router;

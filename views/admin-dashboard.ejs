@@ -5,7 +5,7 @@
 	<input class="form-control" type="number" placeholder="Default input" />
 
 	<main class="p-5">
-		<section class="d-flex gap-4">
+		<section class="d-flex gap-4 flex-wrap">
 			<% allUsers.forEach((element)=>{%>
 			<section
 				style="
@@ -26,7 +26,7 @@
 					alt="Profile Photo"
 					srcset=""
 				/>
-				<h4 class="text-center"><%= element.name %></h4>
+				<h4 class="text-center mt-3"><%= element.name %></h4>
 				<p class="text-center"><%= element.email %></p>
 				<p class="text-center">Admin: <%= element.admin %></p>
 				<section class="d-flex m-0 gap-2 w-100">
@@ -49,7 +49,11 @@
 								d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"
 							/>
 						</svg>
-						<p class="ms-2 m-0 fw-normal">Edit</p>
+						<a
+							href="/admin/dashboard/edit?id=<%= element._id%>"
+							class="ms-2 m-0 fw-normal"
+							>Edit</a
+						>
 					</button>
 					<button
 						class="w-50 btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto"
@@ -76,6 +80,29 @@
 			</section>
 
 			<%})%>
+			<section
+				class="d-flex justify-content-center align-items-center main-card"
+			>
+				<button class="btn btn-primary btn-circle rounded-circle">
+					<a href="/admin/dashboard/create">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="32"
+							height="32"
+							fill="currentColor"
+							class="bi bi-person-add"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 1 0Zm-2-6a3 3 0 1 1-6 0 3 3 0 0 1 6 0ZM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+							/>
+							<path
+								d="M8.256 14a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1h5.256Z"
+							/>
+						</svg>
+					</a>
+				</button>
+			</section>
 		</section>
 	</main>
 </body>
