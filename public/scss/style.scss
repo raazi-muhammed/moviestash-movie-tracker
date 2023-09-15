@@ -50,6 +50,9 @@ $form-check-input-border: none;
 /* BUtton */
 $btn-font-weight: bold;
 
+/* Alerts */
+$alert-border-width: 0;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 /* BUtton */
@@ -117,7 +120,7 @@ select {
 	background-size: contain;
 	background-position: top center;
 	width: 15rem;
-	height: 28rem;
+	aspect-ratio: 15/28;
 
 	&--bottom-sec {
 		backdrop-filter: blur(20px);
@@ -126,8 +129,32 @@ select {
 	}
 }
 
-/* .movie-card--bottom-sec {
-	backdrop-filter: blur(20px);
-	background-color: rgba(0, 0, 0, 0.427);
-	border-radius: 0 0 1rem 1rem;
-} */
+/* Hide scrollbar for Chrome, Safari and Opera */
+article::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+article {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+/* Animation */
+.alert {
+	animation: pop-up 0.5s;
+	animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+	animation-fill-mode: forwards;
+	transform: scale(0);
+}
+
+@keyframes pop-up {
+	0% {
+		transform: translateY(200%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}

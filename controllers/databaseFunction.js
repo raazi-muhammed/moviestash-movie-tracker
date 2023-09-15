@@ -20,4 +20,40 @@ async function getSpecificUsersDetails(filter) {
 	return loginData;
 }
 
-module.exports = { getUserDetails, getAllUserDetails, getSpecificUsersDetails };
+async function addMovieToWatched(userId, movieId) {
+	const updating = await collection.findOneAndUpdate(
+		{ _id: userId },
+		{ $addToSet: { moviesWatched: movieId } }
+	);
+}
+
+async function removeMovieFromWatched(userId, movieId) {
+	const updating = await collection.findOneAndUpdate(
+		{ _id: userId },
+		{ $pull: { moviesWatched: movieId } }
+	);
+}
+
+async function addMovieToLater(userId, movieId) {
+	const updating = await collection.findOneAndUpdate(
+		{ _id: userId },
+		{ $addToSet: { moviesLater: movieId } }
+	);
+}
+
+async function removeMovieFromLater(userId, movieId) {
+	const updating = await collection.findOneAndUpdate(
+		{ _id: userId },
+		{ $pull: { moviesLater: movieId } }
+	);
+}
+
+module.exports = {
+	getUserDetails,
+	getAllUserDetails,
+	getSpecificUsersDetails,
+	addMovieToWatched,
+	removeMovieFromWatched,
+	addMovieToLater,
+	removeMovieFromLater,
+};

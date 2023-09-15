@@ -1,5 +1,6 @@
 const collection = require("../model/mongodb");
 const bcrypt = require("bcrypt");
+const renderHomePage = require("../controllers/userController");
 
 async function checkDetails(req, res, next) {
 	try {
@@ -15,7 +16,7 @@ async function checkDetails(req, res, next) {
 		else throw new Error("New error");
 	} catch (error) {
 		console.log("Incorrect pass");
-		res.redirect("/login");
+		renderHomePage(req, res, "Incorrect Password");
 	}
 }
 

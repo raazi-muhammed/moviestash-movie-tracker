@@ -35,6 +35,12 @@ const loginSchema = new mongoose.Schema({
 	profilePic: {
 		type: String,
 	},
+	moviesWatched: {
+		type: Array,
+	},
+	moviesLater: {
+		type: Array,
+	},
 });
 
 const collection = new mongoose.model("users", loginSchema);
