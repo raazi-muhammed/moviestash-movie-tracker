@@ -26,4 +26,8 @@ router.post("/create/submit", (req, res) => {
 	adminController.createUserSubmit(req, res);
 });
 
+router.post("/search", (req, res) => {
+	adminController.searchAndDisplay(req, res);
+});
+
 module.exports = router;

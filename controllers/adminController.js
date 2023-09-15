@@ -1,8 +1,9 @@
 const collection = require("../model/mongodb");
 const authentication = require("../controllers/authentication");
+const dbFunction = require("../controllers/databaseFunction");
 
 async function displayUsers(req, res) {
-	const allUsers = await collection.find({});
+	const allUsers = await dbFunction.getAllUserDetails();
 	res.render("admin-dashboard", { allUsers });
 }
 async function deleteUser(req, res) {
@@ -47,10 +48,16 @@ async function createUserSubmit(req, res) {
 	res.redirect("/admin/dashboard");
 }
 
+async function searchAndDisplay(req, res) {
+	const allUsers = await dbFunction.getSpecificUsersDetails(req.body.search);
+	res.render("admin-dashboard", { allUsers });
+}
+
 module.exports = {
 	displayUsers,
 	deleteUser,
 	editUser,
 	editUserSubmit,
 	createUserSubmit,
+	searchAndDisplay,
 };

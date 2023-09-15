@@ -12058,4 +12058,23 @@ select {
   white-space: nowrap;
   overflow: hidden !important;
   text-overflow: ellipsis;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.movie-card {
+  background-size: contain;
+  background-position: top center;
+  width: 15rem;
+  height: 28rem;
+}
+.movie-card--bottom-sec {
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+  background-color: rgba(0, 0, 0, 0.427);
+  border-radius: 0 0 1rem 1rem;
+}
+
+/* .movie-card--bottom-sec {
+	backdrop-filter: blur(20px);
+	background-color: rgba(0, 0, 0, 0.427);
+	border-radius: 0 0 1rem 1rem;
+} *//*# sourceMappingURL=style.css.map */
