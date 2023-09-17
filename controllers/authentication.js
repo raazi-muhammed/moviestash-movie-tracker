@@ -6,7 +6,6 @@ async function checkDetails(req, res, next) {
 	try {
 		let userName = req.body.username || req.session.user.username;
 		let password = req.body.password || req.session.user.password;
-		console.log(userName, password);
 
 		const loginData = await collection.findOne({
 			name: userName,
@@ -15,7 +14,6 @@ async function checkDetails(req, res, next) {
 		if (isPassCorrect) next();
 		else throw new Error("New error");
 	} catch (error) {
-		console.log("Incorrect pass");
 		renderHomePage(req, res, "Incorrect Password");
 	}
 }
@@ -30,8 +28,14 @@ async function hashPass(password) {
 }
 
 async function checkIfAdmin(req, res, next) {
-	const loginData = await collection.findOne({ name: req.body.username });
-	if (loginData.admin) next();
+	try {
+		let userName = req.body.username || req.session.admin.username;
+		const loginData = await collection.findOne({ name: userName });
+		if (loginData.admin) next();
+		else throw new Error();
+	} catch (error) {
+		res.redirect("/admin");
+	}
 }
 
 module.exports = { checkDetails, hashPass, checkIfAdmin };

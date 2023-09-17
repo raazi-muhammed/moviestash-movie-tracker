@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const collection = require("../model/mongodb");
 const authentication = require("../controllers/authentication");
-const dbFunction = require("../controllers/databaseFunction");
+const dbFunction = require("../model/databaseFunction");
 
 router.get("/", (req, res) => {
 	res.render("user-signup");
@@ -10,9 +10,7 @@ router.get("/", (req, res) => {
 
 router.post("/submit", async (req, res) => {
 	req.session.user = req.body;
-	console.log("submit data: " + req.body);
 
-	//checks if user already exists
 	let user = await dbFunction.getUserDetails(req.body.username);
 
 	if (!user) {
@@ -30,9 +28,7 @@ router.post("/submit", async (req, res) => {
 		};
 		await collection.insertMany([userData]);
 		res.redirect("/homepage");
-	} else {
-		console.log("User already exist");
-	}
+	} else console.log("User already Exists");
 });
 
 module.exports = router;

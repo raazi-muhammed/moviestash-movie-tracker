@@ -1,7 +1,11 @@
+require("dotenv").config();
+
+const API_KEY = process.env.ODMB_API_KEY;
+
 async function getMovie(movieId) {
 	try {
 		const response = await fetch(
-			`http://www.omdbapi.com/?i=${movieId}&apikey=81141d43`
+			`http://www.omdbapi.com/?i=${movieId}&apikey=${API_KEY}`
 		);
 		const data = await response.json();
 

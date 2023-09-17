@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-
 const bodyParser = require("body-parser");
 const path = require("path");
 const session = require("express-session");
 const { v4: uuidv4 } = require("uuid");
 
-const PORT = 3000;
+require("dotenv").config();
+const PORT = process.env.PORT;
 
 const userLogin = require("./routes/userLogin");
 const userSignup = require("./routes/userSignup");
@@ -35,11 +35,8 @@ app.use("/static", express.static(path.join(__dirname, "/public")));
 
 /* Home Page */
 app.get("/", (req, res) => {
-	console.log("home: " + req.session.user);
-
 	if (req.session.user) res.redirect("/homepage");
 	else res.redirect("/login");
-	/* res.send(req.session.user); */
 });
 
 //router

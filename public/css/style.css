@@ -28,7 +28,7 @@
 /* Colors */
 /* Input */
 /* check box */
-/* BUtton */
+/* Button */
 /* Alerts */
 /*!
  * Bootstrap  v5.3.2 (https://getbootstrap.com/)
@@ -12007,7 +12007,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/* BUtton */
+/* Button */
 .btn {
   height: 3rem;
   width: 100%;
@@ -12090,7 +12090,7 @@ article {
   scrollbar-width: none; /* Firefox */
 }
 
-/* Animation */
+/* Animations */
 .alert {
   animation: pop-up 0.5s;
   animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);

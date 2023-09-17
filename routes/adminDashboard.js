@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const adminController = require("../controllers/adminController");
+const { checkIfAdmin } = require("../controllers/authentication");
 
-router.get("/", (req, res) => {
+router.get("/", checkIfAdmin, (req, res) => {
 	adminController.displayUsers(req, res);
 });
 
@@ -28,6 +29,11 @@ router.post("/create/submit", (req, res) => {
 
 router.post("/search", (req, res) => {
 	adminController.searchAndDisplay(req, res);
+});
+
+router.get("/logout", (req, res) => {
+	req.session.destroy();
+	res.redirect("/admin");
 });
 
 module.exports = router;

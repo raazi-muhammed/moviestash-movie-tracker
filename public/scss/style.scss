@@ -47,7 +47,7 @@ $input-height: 3rem;
 /* check box */
 $form-check-input-border: none;
 
-/* BUtton */
+/* Button */
 $btn-font-weight: bold;
 
 /* Alerts */
@@ -55,8 +55,7 @@ $alert-border-width: 0;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-/* BUtton */
-
+/* Button */
 .btn {
 	height: 3rem;
 	width: 100%;
@@ -140,7 +139,7 @@ article {
 	scrollbar-width: none; /* Firefox */
 }
 
-/* Animation */
+/* Animations */
 .alert {
 	animation: pop-up 0.5s;
 	animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);

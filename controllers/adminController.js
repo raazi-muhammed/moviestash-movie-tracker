@@ -1,6 +1,6 @@
 const collection = require("../model/mongodb");
 const authentication = require("../controllers/authentication");
-const dbFunction = require("../controllers/databaseFunction");
+const dbFunction = require("../model/databaseFunction");
 
 async function displayUsers(req, res) {
 	const allUsers = await dbFunction.getAllUserDetails();
@@ -12,7 +12,6 @@ async function deleteUser(req, res) {
 }
 async function editUser(req, res) {
 	const userToEdit = await collection.find({ _id: req.query.id });
-	console.log(userToEdit);
 	res.render("admin-user-edit", { userToEdit });
 }
 async function editUserSubmit(req, res) {
