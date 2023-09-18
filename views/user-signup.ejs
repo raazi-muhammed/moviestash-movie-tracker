@@ -64,7 +64,7 @@
 					<input
 						type="password"
 						id="c-password"
-						name="c-password"
+						name="cPassword"
 						class="form-control"
 						placeholder="confirm password*"
 						required />
@@ -86,6 +86,19 @@
 			</form>
 		</div>
 	</div>
+	<section style="position: fixed; bottom: 1rem; right: 1rem; max-width: 30rem">
+		<% if (message != "") {%>
+
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<%- message %>
+			<button
+				type="button"
+				class="btn-close"
+				data-bs-dismiss="alert"
+				aria-label="Close"></button>
+		</div>
+		<% } %>
+	</section>
 </body>
 
 <%- include("./layout/footer.ejs")%>

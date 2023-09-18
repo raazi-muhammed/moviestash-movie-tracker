@@ -2,6 +2,10 @@ const collection = require("../model/mongodb");
 const authentication = require("../controllers/authentication");
 const dbFunction = require("../model/databaseFunction");
 
+function displayAdminLogin(req, res, message = "") {
+	res.render("admin-login", { message });
+}
+
 async function displayUsers(req, res) {
 	const allUsers = await dbFunction.getAllUserDetails();
 	res.render("admin-dashboard", { allUsers });
@@ -59,4 +63,5 @@ module.exports = {
 	editUserSubmit,
 	createUserSubmit,
 	searchAndDisplay,
+	displayAdminLogin,
 };

@@ -35,8 +35,7 @@ app.use("/static", express.static(path.join(__dirname, "/public")));
 
 /* Home Page */
 app.get("/", (req, res) => {
-	if (req.session.user) res.redirect("/homepage");
-	else res.redirect("/login");
+	req.session.user ? res.redirect("/homepage") : res.redirect("/login");
 });
 
 //router

@@ -3,6 +3,21 @@
 <body class="bg-dark">
 	<%- include("./layout/other/user-top.ejs") %>
 	<main class="p-4 row">
+		<form
+			action="/homepage/search"
+			method="POST"
+			class="d-flex justify-content-end">
+			<input
+				class="form-control my-4"
+				type="text"
+				name="search"
+				id="search"
+				placeholder="Search"
+				style="max-width: 20rem" />
+			<button type="submit" class="btn btn-primary visually-hidden">
+				Submit
+			</button>
+		</form>
 		<h3 class="text-light ms-4">Top Movies</h3>
 		<section class="d-flex w-100 overflow-auto mb-4">
 			<% moviesDetails.forEach((element) => { %>
@@ -20,6 +35,10 @@
 							href="/homepage/later?userId=<%=userData._id%>&movieId=<%=element.imdbId%>"
 							class="w-50 text-decoration-none">
 							<button
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								data-bs-custom-class="custom-tooltip"
+								data-bs-title="Add to Watch Later List."
 								class="btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -41,6 +60,10 @@
 							href="/homepage/watched?userId=<%=userData._id%>&movieId=<%=element.imdbId%>"
 							class="w-50 text-decoration-none">
 							<button
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								data-bs-custom-class="custom-tooltip"
+								data-bs-title="Already Watched."
 								class="btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +83,7 @@
 			</section>
 			<%})%>
 		</section>
-		<% if (userWantToWatchMovies != "") {%> <% if (userWatchMovies != "") {%>
+		<% if (userWatchMovies != "") {%>
 		<h3 class="text-light ms-4">Watched Movies</h3>
 		<section class="d-flex w-100 overflow-auto mb-4">
 			<% userWatchMovies.forEach((element) => { %>
@@ -74,8 +97,14 @@
 						<span class="text-limit-dot"><%= element.title%></span>
 					</p>
 					<section class="d-flex gap-1">
-						<a href="#" class="w-50 text-decoration-none">
+						<a
+							href="/homepage/later?userId=<%=userData._id%>&movieId=<%=element.imdbId%>"
+							class="w-50 text-decoration-none">
 							<button
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								data-bs-custom-class="custom-tooltip"
+								data-bs-title="Add to Watch Later List."
 								class="btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -97,6 +126,10 @@
 							href="/homepage/un-watched?userId=<%=userData._id%>&movieId=<%=element.imdbId%>"
 							class="w-50 text-decoration-none">
 							<button
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								data-bs-custom-class="custom-tooltip"
+								data-bs-title="Remove from Watched."
 								class="btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -116,11 +149,10 @@
 			</section>
 			<%})%>
 		</section>
-		<% } %>
+		<% } %> <% if (userWantToWatchMovies != "") {%>
 		<h3 class="text-light ms-4">Movies To Watch</h3>
 		<section class="d-flex w-100 overflow-auto mb-4">
 			<% userWantToWatchMovies.forEach((element) => { %>
-
 			<section
 				style="background-image: url('<%= element.poster%>')"
 				class="p-0 m-3 movie-card bg-black text-light rounded-4 d-flex flex-column align-items-center">
@@ -134,6 +166,10 @@
 							href="/homepage/un-later?userId=<%=userData._id%>&movieId=<%=element.imdbId%>"
 							class="w-50 text-decoration-none">
 							<button
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								data-bs-custom-class="custom-tooltip"
+								data-bs-title="Remove from Watch Later."
 								class="btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
@@ -147,7 +183,7 @@
 									<path
 										d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
 								</svg>
-								<p class="ms-2 m-0 fw-normal">UnLater</p>
+								<p class="ms-2 m-0 fw-normal">Remove</p>
 							</button>
 						</a>
 
@@ -155,6 +191,10 @@
 							href="/homepage/un-watched?userId=<%=userData._id%>&movieId=<%=element.imdbId%>"
 							class="w-50 text-decoration-none">
 							<button
+								data-bs-toggle="tooltip"
+								data-bs-placement="top"
+								data-bs-custom-class="custom-tooltip"
+								data-bs-title="Already Watched."
 								class="btn btn-dark-half d-flex align-items-center justify-content-center rounded-pill px-auto">
 								<svg
 									xmlns="http://www.w3.org/2000/svg"
