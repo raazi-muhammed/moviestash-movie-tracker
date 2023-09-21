@@ -3,7 +3,9 @@ const router = express.Router();
 const adminController = require("../controllers/adminController");
 const { checkIfAdmin } = require("../controllers/authentication");
 
-router.get("/", checkIfAdmin, (req, res) => {
+router.use(checkIfAdmin);
+
+router.get("/", (req, res) => {
 	adminController.displayUsers(req, res);
 });
 
@@ -20,7 +22,7 @@ router.post("/edit/submit", (req, res) => {
 });
 
 router.get("/create", (req, res) => {
-	res.render("admin-user-create");
+	res.render("admin-user-create", { message: "" });
 });
 
 router.post("/create/submit", (req, res) => {

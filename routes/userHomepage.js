@@ -5,14 +5,15 @@ const dbFunction = require("../model/databaseFunction");
 const homepage = require("../controllers/userHomePageController");
 const omdb = require("../controllers/odmbMovies");
 
+router.use(authentication.checkDetails);
 let userData;
-router.post("/", authentication.checkDetails, async (req, res) => {
+router.post("/", async (req, res) => {
 	req.session.user = req.body;
 	userData = await dbFunction.getUserDetails(req.session.user.username);
 	homepage.renderUserHomePage(req, res, userData);
 });
 
-router.get("/", authentication.checkDetails, async (req, res) => {
+router.get("/", async (req, res) => {
 	userData = await dbFunction.getUserDetails(req.session.user.username);
 	homepage.renderUserHomePage(req, res, userData);
 });

@@ -1,4 +1,4 @@
-const collection = require("../model/mongodb");
+const collection = require("../config/mongodb");
 const authentication = require("../controllers/authentication");
 const dbFunction = require("../model/databaseFunction");
 
@@ -31,13 +31,14 @@ async function editUserSubmit(req, res) {
 		},
 		{ upsert: false }
 	);
-	res.redirect("/admin/dashboard");
+
+	displayUsers(req, res);
 }
 async function createUserSubmit(req, res) {
-	hashedPass = await authentication.hashPass(req.body.password);
+	hashedPassword = await authentication.hashPass(req.body.password);
 	const userData = {
 		name: req.body.username,
-		password: hashedPass,
+		password: hashedPassword,
 		email: req.body.email,
 		age: req.body.age,
 		gender: req.body.gender,

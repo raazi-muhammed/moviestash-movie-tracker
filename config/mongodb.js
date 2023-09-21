@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
+const URL = process.env.MONOGODB_URL;
 mongoose
-	.connect("mongodb://localhost:27017/movieStash")
+	.connect(URL)
 	.then(() => {
 		console.log("Connected");
 	})

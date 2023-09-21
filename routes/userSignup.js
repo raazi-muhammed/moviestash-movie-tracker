@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const collection = require("../model/mongodb");
+const collection = require("../config/mongodb");
 const authentication = require("../controllers/authentication");
 const dbFunction = require("../model/databaseFunction");
 const userController = require("../controllers/userController");
@@ -10,7 +10,6 @@ router.get("/", (req, res) => {
 });
 
 function confirmPassword(req, res, next) {
-	console.log(req.body.cPassword + req.body.password);
 	if (req.body.cPassword === req.body.password) next();
 	else userController.renderSignupPage(req, res, "Passwords doesn't match");
 }

@@ -1,4 +1,4 @@
-const collection = require("./mongodb");
+const collection = require("../config/mongodb");
 
 async function getUserDetails(nameToFind) {
 	const loginData = await collection.findOne({ name: nameToFind });

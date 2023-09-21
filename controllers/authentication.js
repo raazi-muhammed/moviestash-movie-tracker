@@ -1,7 +1,6 @@
-const collection = require("../model/mongodb");
+const collection = require("../config/mongodb");
 const bcrypt = require("bcrypt");
 const userController = require("../controllers/userController");
-const { displayAdminLogin } = require("./adminController");
 
 async function checkDetails(req, res, next) {
 	try {
@@ -29,9 +28,10 @@ async function hashPass(password) {
 }
 
 async function checkIfAdmin(req, res, next) {
+	console.log("chek if Amind");
 	try {
-		let userName = req.body.username || req.session.admin.username;
-		let password = req.body.password || req.session.admin.password;
+		let userName = req.body.adminName || req.session.admin.adminName;
+		let password = req.body.adminPassword || req.session.admin.adminPassword;
 
 		const loginData = await collection.findOne({ name: userName });
 
@@ -41,7 +41,9 @@ async function checkIfAdmin(req, res, next) {
 		if (loginData.admin) next();
 		else throw new Error();
 	} catch (e) {
-		displayAdminLogin(req, res, "Not an Admin or Invalid Credentials");
+		console.log(e);
+
+		res.render("admin-login", { message: "Not an admin or Invalid Password" });
 	}
 }
 
