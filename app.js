@@ -33,6 +33,15 @@ app.use(
 //static
 app.use("/static", express.static(path.join(__dirname, "/public")));
 
+//back button to homepage
+app.use(function (req, res, next) {
+	res.set(
+		"Cache-Control",
+		"no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0"
+	);
+	next();
+});
+
 /* Home Page */
 app.get("/", (req, res) => {
 	req.session.user ? res.redirect("/homepage") : res.redirect("/login");
@@ -44,6 +53,9 @@ app.use("/signup", userSignup);
 app.use("/admin", adminLogin);
 app.use("/admin/dashboard", adminDashboard);
 app.use("/homepage", userHomepage);
+app.use("*", (req, res) => {
+	req.session.user ? res.redirect("/homepage") : res.redirect("/login");
+});
 
 app.listen(PORT, () => {
 	console.log(`Server started on ${PORT}`);
